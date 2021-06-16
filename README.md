@@ -32,3 +32,5 @@ Tips：
 
 8.英文摘要要多用被动语态，避免出现this paper 此类字样，paper使用thesis代替。
 
+注：如何在overleaf使用本模板，只需在github上下载本文zip文件，在overleaf上点击账户，然后在overleaf上新建项目，选择upload project 然后选择此zip文件，即可使用，注意编译器要选xelatex！！！（编辑器选择在左上角menu栏里）
+
