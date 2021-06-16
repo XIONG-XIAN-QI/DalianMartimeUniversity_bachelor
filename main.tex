@@ -1,0 +1,132 @@
+% Copyright (C) 2018 Liu Yifan, Zhao Tianyu 
+% Permission is granted to copy, distribute and/or modify this document
+% under the terms of the GNU Free Documentation License, Version 1.3
+% or any later version published by the Free Software Foundation;
+% with no Invariant Sections, no FrontCover Texts, and no BackCover Texts.
+% A copy of the license is included in the section entitled "GNU
+% Free Documentation License".
+%%%%%%%%%%%%%%%%重要的事情现在前面,第一次编译点左上角选 Compiler(编译器)为XeLaTeX%%%%%%%%%%%%
+\documentclass[zihao=-4,a4paper]{ctexart}
+
+% 论文基本配置，加载宏包、数学命令等全局配置
+\input{dmusetup.tex}
+\begin{document}
+        %  \begin{center}
+        %   求解多右端线性方程组的一种改进共轭梯度算法研究\\
+        %   %{\bfseries \zihao{2} ！如果不多加这一行字复制进Word会乱码，导致不能查重！}
+        %  \end{center}
+
+	\includepdfmerge{my_cover2.pdf}
+	\thispagestyle{plain}
+	\pagenumbering{Roman}
+	\linespread{1.35}
+	\begin{abstract}
+	\zihao{-4}{
+	随着无人驾驶技术的发展，各种路径规划与无人驾驶决策算法被相继提出，然而现今的路径规划算法大都无法考虑乘客与驾驶人员的习惯。无人驾驶的决策模块也大都基于规则进行设计，其设计成本高且无法适应复杂环境。
+	
+	针对上述问题，本文使用强化学习的路径规划方法进行路径规划，强化学习可以通过定制奖励函数，来满足不同人的需求。针对无人驾驶决策模块的问题，本文使用深度强化学习中的深度Q学习（DQN）算法进行车道保持决策，其作为一种端到端的算法可以有效解决上述提到的问题。最后，本文在Python+gym环境下验证了本文使用的强化学习算法，其结果表明使用强化学习做路径规划可以满足不同人员的要求；在Carla仿真平台进行了车道保持任务决策，其结果显示使用深度强化学习进行无人驾驶决策具有一定可行性。
+  
+	{\bfseries  关键词: 路径规划, 深度强化学习, Carla, 车道保持, 无人驾驶，强化学习} }
+	\end{abstract}
+
+
+	
+
+	
+	\newpage
+	\thispagestyle{plain}
+	\renewcommand\abstractname{ABSTRACT}
+	
+	\begin{abstract}
+	\zihao{-4}{
+With the development of driverless technology, various path planning and driverless decision-making algorithms are proposed one after another. However, most of the current path planning algorithms cannot consider the habits of passengers and drivers. Most of the decision-making modules of unmanned driving are also designed based on rules, which are expensive to design and cannot adapt to complex environments.
+To in  response to the above problems, this thesis uses the reinforcement learning path planning method for path planning. Reinforcement learning can customize the reward function to meet the needs of different people. Aiming at the problem of the driverless decision-making module, this thesis uses the deep Q-learning (DQN) algorithm in deep reinforcement learning to make lane keeping decision-making. As an end-to-end algorithm, it can effectively solve the above-mentioned problems. Finally, this thesis verifies the reinforcement learning algorithm used in this thesis in the Python+gym environment, and the results show that the use of reinforcement learning for path planning can meet the requirements of different personnel; the lane keeping task decision is made on the Carla simulation platform, and the results show that the depth of use Reinforcement learning has certain feasibility for driverless decision-making.
+
+	{\bf Keywords: 
+PathPlanner, DeepReinforcementLearning, Carla, Line Keeping, self-driving car,ReinforcementLearning}     }
+	\end{abstract}
+	
+	\newpage
+	\thispagestyle{plain}
+	\renewcommand\contentsname{\centerline{\zihao{3}    目\hspace*{2em}录}}
+
+	\tableofcontents
+	\thispagestyle{plain}
+% 
+	
+	\newpage
+	
+	%\maketitle
+	\thispagestyle{fancy}
+	\vspace*{-20pt}
+	\begin{center}
+	\zihao{3} \bfseries  无人驾驶车辆路径规划与车道保持强化学习方法
+	\vspace*{20pt}
+	\end{center}
+	
+	\pagenumbering{arabic}
+	
+% \mainmatter
+\input{text/ch1} \sectionend
+\input{text/ch2} \sectionend
+% \input{text/ch3} \sectionend
+\input{text/ch3} \sectionend
+\input{text/ch4} \sectionend
+%\input{text/ch5} \sectionend
+
+
+	
+	\vspace*{0pt}
+	\section*{总结与展望}	
+	
+	
+	\addcontentsline{toc}{section}{总结与展望}
+%	本文从最优化理论出发
+  
+  本文从强化学习路径规划出发，提出可以通过个性化设计奖励函数来达到以人为本的路径规划，对此使用强化学习中的Q学习算法和SARSA算法进行了验证，实验结果表明
+Q学习算法可以较好的满足奖励函数的要求。虽然如此，但如何设计奖励函数来体现用户的需求也是一大难题，后续可以通过使用深度逆强化学习反向解析用户习惯，得到用户
+的个性化奖励函数。
+针对无人驾驶决策领域的挑战，本文提出使用深度强化学习中的DQN算法来代替传统的无人驾驶决策模块，实现车道保持
+任务，对此想法在Carla仿真环境中进行验证，可以看到DQN车道保持算法基本可以实现车道保持，但也具有一定缺陷。由于动作空间较少的原因，车道保持的过程会出现一定的左右摇摆现象，为什么不选取多动作空间是因为多动作空间神经网络的训练过于耗时，所以本文只选取了三个值的动作空间加快训练，且三动作空间下DQN的车道保持效果也可以令人接受，动作空间的选取较好的折中了计算资源和实验效果。训练过程中由于$\epsilon$贪心策略的存在车辆有时会去往错误的地方，后续可以加入规则进行限制。
+综上可以看出
+深度强化学习在无人驾驶决策领域是可以大有所为的，此外在后续神经网络的训练过程中也可以加入专家样本来指导神经网络，加快神经网络的收敛，提升神经网络的性能。
+   
+
+	
+	
+	
+	\sectionend
+	\addcontentsline{toc}{section}{参\ 考\ 文\ 献}
+	\begin{small}	
+		\setlength{\bibsep}{0ex}
+		\vspace*{0pt}
+		\bibliographystyle{thuthesis-bachelor}
+		\bibliography{refs}
+	\end{small}
+		
+	
+
+	\sectionend	
+	
+	\vspace*{0pt}
+	\section*{\centerline{致\hspace*{3em}谢}}
+	\addcontentsline{toc}{section}{致\hspace*{1em}谢}
+	%\zihao{-4}{
+	感谢大连海事大学四年的培养，感谢本科阶段所有的老师，他们在我获取知识的途中给予了我巨大的帮助。在所有老师中特别需要感谢的
+为本科指导教师陈余庆老师，他给了我论文许多建议，使我受益匪浅。感谢答辩的评审老师，感谢你们在百忙之中，抽出时间检查我的成果。
+本科论文就像是一个对本科生涯的总结，它的完成当然也离不开我在本科阶段遇到的朋友，老师，以及一直在背后支持我的家人。此外还要感谢
+清华大学和大连海事大学Latex模板以及开源社区和问答社区的所有开发者，他们的工作和回答，使我免去了许多重复的工作。
+
+最后，感谢所有评审老师和专家，感谢你们抽出宝贵的时间审查我的论文，希望你们对本篇论文提出宝贵的意见。
+	
+%	\sectionend	
+	
+%	\vspace*{0pt}
+%	\section*{\centerline{附\hspace*{3em}录}}
+%	\addcontentsline{toc}{section}{附\hspace*{1em}录}
+
+%\begin{figure}[htbp!]
+% \includegraphics[height=0.9\textheight]{code/dependency.png}
+% \end{figure}	    
+
+\end {document}
